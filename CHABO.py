@@ -1,6 +1,7 @@
 import json
 import datetime
-from sklearn.feature_extraction.text import CountVectorizer
+import random
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -25,7 +26,8 @@ def unknown_input():
     return unknown_input_response
 
 def clean_text(text):
-    return text.lower().strip().split()
+    x = text.lower().strip().split()
+    return x
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ===============================  MAIN CHABO THINGS  =======================================
@@ -34,7 +36,7 @@ def clean_text(text):
 class NLPCHABO:
     def __init__(self,intents_path):
         self.intents = load_intents(intents_path)
-        self.vectorizer = CountVectorizer(tokenizer=clean_text, binary=True)
+        self.vectorizer = TfidfVectorizer (tokenizer=clean_text, token_pattern = None, lowercase = True)
         self.classifier = MultinomialNB()
         self.train_data()
         print("Training Completed")
@@ -53,18 +55,37 @@ class NLPCHABO:
     def predict_intent(self, user_input):
         x_test = self.vectorizer.transform([user_input])
         probability_of_intent = self.classifier.predict_proba(x_test)[0]
+        #print("Probabilities:", probability_of_intent)
         intent_with_max_prob = max(probability_of_intent)
         best_intent = self.classifier.classes_[probability_of_intent.argmax()]
-        if intent_with_max_prob < 0.4:
+        if intent_with_max_prob < 0.2:
             return None
         return best_intent
-    
+                           
     def make_response(self, user_input):
-        best_intent = self.predict_intent(user_input)
-        if best_intent is None:
-            return unknown_input()
-        for intent in self.intents['intents']:
-            if intent['tag'] == best_intent:
-                response = intent['responses']
-                log_conversation(user_input, response)
-                return response
+        intent = self.predict_intent(user_input)
+        if intent:
+            for i in self.intents['intents']:
+                if i['tag'] == intent:
+                    return random.choice(i['responses'])
+        return unknown_input()
+    
+
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ==================================  MAIN Function  ========================================
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+def main():
+    print("CHABO: Hello, I am CHABO 1.0 \n To exit type 'QUIT' or 'EXIT' \n Ask Me Something...")
+    bot = NLPCHABO("intents.json")
+    while True:
+        user_input = input("You: ").strip()
+        if user_input.lower() in ["exit","quit"]:
+            print("CHABO: Exiting...")
+            break
+        response = bot.make_response(user_input)
+        print("CHABO: ", response)
+        log_conversation(user_input, response)
+
+if __name__ == "__main__":
+    main()
