@@ -1,0 +1,154 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good evening",
+        "Howdy",
+        "Hey there",
+        "Hi there",
+        "What's up",
+        "How's it going?",
+        "Greetings",
+        "Nice to meet you"
+      ],
+      "responses": [
+        "Hello!",
+        "Hi there!",
+        "Greetings!",
+        "Hey! How can I help you?",
+        "Hi, how are you today?",
+        "Hello! Ask me anything."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you",
+        "Goodbye",
+        "Catch you later",
+        "Talk to you later",
+        "See you soon",
+        "Bye bye",
+        "I'm leaving",
+        "Take care",
+        "Have a nice day"
+      ],
+      "responses": [
+        "Goodbye!",
+        "See you soon!",
+        "Have a great day!",
+        "Bye!",
+        "Take care!",
+        "Catch you later!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thanks a lot",
+        "I appreciate it",
+        "Much appreciated",
+        "Many thanks",
+        "Thank you so much",
+        "Cheers",
+        "Thanks for the help"
+      ],
+      "responses": [
+        "You're welcome!",
+        "No problem!",
+        "Happy to help!",
+        "Anytime!",
+        "Glad I could help!",
+        "You're most welcome!"
+      ]
+    },
+    {
+      "tag": "name",
+      "patterns": [
+        "What is your name?",
+        "Who are you?",
+        "Tell me your name",
+        "Can I know your name?",
+        "What do people call you?",
+        "What's your bot name?",
+        "Do you have a name?",
+        "What's your identity?"
+      ],
+      "responses": [
+        "I'm a Python chatbot.",
+        "I am your virtual assistant.",
+        "You can call me PyBot.",
+        "My name is CHABO, nice to meet you!"
+      ]
+    },
+    {
+      "tag": "age",
+      "patterns": [
+        "How old are you?",
+        "What is your age?",
+        "When were you created?",
+        "What's your birthday?",
+        "Tell me your age",
+        "When did you come to life?",
+        "Since when do you exist?",
+        "Do you know your age?"
+      ],
+      "responses": [
+        "I'm timeless!",
+        "Age is just a number for me.",
+        "I was created in 2025.",
+        "I don't age like humans do!"
+      ]
+    },
+    {
+      "tag": "creator",
+      "patterns": [
+        "Who created you?",
+        "Who is your developer?",
+        "Who made you?",
+        "Who built you?",
+        "Who is behind this chatbot?",
+        "Who programmed you?",
+        "Who's your creator?",
+        "Tell me who developed you"
+      ],
+      "responses": [
+        "I was created by a Python developer.",
+        "A team of coders built me.",
+        "My creator prefers to remain anonymous.",
+        "Developed by a curious mind!"
+      ]
+    },
+    {
+      "tag": "joke",
+      "patterns": [
+        "Tell me a joke",
+        "Make me laugh",
+        "Do you know any jokes?",
+        "Say something funny",
+        "Cheer me up",
+        "Tell a funny joke",
+        "Crack a joke",
+        "Give me a joke",
+        "Say a joke",
+        "Joke please"
+      ],
+      "responses": [
+        "Why did the computer show up at work late? It had a hard drive!",
+        "Why was the math book sad? Because it had too many problems.",
+        "Why don't programmers like nature? It has too many bugs.",
+        "Why did the developer go broke? Because he used up all his cache.",
+        "Why do Java developers wear glasses? Because they can't C#."
+      ]
+    }
+  ]
+}
